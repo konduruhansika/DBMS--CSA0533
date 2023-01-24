@@ -1,0 +1,87 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cstudent           |
+| cstudents          |
+| faculty            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| student            |
+| students           |
+| sys                |
++--------------------+
+9 rows in set (0.01 sec)
+
+mysql> use faculty;
+Database changed
+mysql> create table faculty(facno varchar(4),facname varchar(15),gender varchar(1),dob date,doj date,mobileno int(10));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> desc faculty;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| facno    | varchar(4)  | YES  |     | NULL    |       |
+| facname  | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| doj      | date        | YES  |     | NULL    |       |
+| mobileno | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> alter table faculty
+    -> ADD salary int(7);
+    Query OK, 0 rows affected, 1 warning (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> alter table faculty
+    -> DROP COLUMN mobileno;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facno   | varchar(4)  | YES  |     | NULL    |       |
+| facname | varchar(15) | YES  |     | NULL    |       |
+| gender  | varchar(1)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| doj     | date        | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> TRUNCATE table faculty;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SELECT * from faculty;
+Empty set (0.00 sec)
+
+mysql> desc faculty;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| facno   | varchar(4)  | YES  |     | NULL    |       |
+| facname | varchar(15) | YES  |     | NULL    |       |
+| gender  | varchar(1)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| doj     | date        | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> insert into faculty values('a','archana','F','1981-09-07','2006-05-03','25000');
+Query OK, 1 row affected (0.00 sec)
+mysql> SELECT * from faculty;
++-------+---------+--------+------------+------------+--------+
+| facno | facname | gender | dob        | doj        | salary |
++-------+---------+--------+------------+------------+--------+
+| a     | archana | F      | 1981-09-07 | 2006-05-03 |  25000 |
++-------+---------+--------+------------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql>
