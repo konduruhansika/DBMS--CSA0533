@@ -1,0 +1,80 @@
+mysql> create database book;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use book;
+Database changed
+mysql> create table book(bookno int(2),bookname varchar(25),publishername varchar(25),publishercountry varchar(25));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc book;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| bookno           | int(2)      | YES  |     | NULL    |       |
+| bookname         | varchar(25) | YES  |     | NULL    |       |
+| publishername    | varchar(25) | YES  |     | NULL    |       |
+| publishercountry | varchar(25) | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into book values('1','harry potter','jk rowling','USA');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into book values('2','pride and prejudice','jane austen','ENGLAND');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into book values('3','a walk to remember','nicholas sparks','USA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into book values('4','twilight series','stephanie mayer','UK');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from books;
+ERROR 1146 (42S02): Table 'book.books' doesn't exist
+mysql> select * from book;
++--------+---------------------+-----------------+------------------+
+| bookno | bookname            | publishername   | publishercountry |
++--------+---------------------+-----------------+------------------+
+|      1 | harry potter        | jk rowling      | USA              |
+|      2 | pride and prejudice | jane austen     | ENGLAND          |
+|      3 | a walk to remember  | nicholas sparks | USA              |
+|      4 | twilight series     | stephanie mayer | UK               |
++--------+---------------------+-----------------+------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc book;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| bookno           | int(2)      | YES  |     | NULL    |       |
+| bookname         | varchar(25) | YES  |     | NULL    |       |
+| publishername    | varchar(25) | YES  |     | NULL    |       |
+| publishercountry | varchar(25) | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> alter table book;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> alter table book
+    -> DROP COLUMN bookno;
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> alter table book
+    -> ADD COLUMN publishyear int(4);
+Query OK, 4 rows affected (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> desc book;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| bookname         | varchar(25) | YES  |     | NULL    |       |
+| publishername    | varchar(25) | YES  |     | NULL    |       |
+| publishercountry | varchar(25) | YES  |     | NULL    |       |
+| publishyear      | int(4)      | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql>
