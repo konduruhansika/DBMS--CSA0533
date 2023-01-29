@@ -1,0 +1,95 @@
+
+mysql> create database studentprogress;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use studentprogress;
+Database changed
+mysql> create table studentprogress(regno int(3),name varchar(15),subject varchar(25),marks int(3),PorF varchar(1));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc studentprogress;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| regno   | int(3)      | YES  |     | NULL    |       |
+| name    | varchar(15) | YES  |     | NULL    |       |
+| subject | varchar(25) | YES  |     | NULL    |       |
+| marks   | int(3)      | YES  |     | NULL    |       |
+| PorF    | varchar(1)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into studentprogress values('123','alex','DBMS','95','P');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into studentprogress values('124','peter','C++','45','F');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into studentprogress values('125','selena','DS','92','P');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into studentprogress values('126','sharon','M1','35','F');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into studentprogress values('127','mary','OS','48','F');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from studentprogress;
++-------+--------+---------+-------+------+
+| regno | name   | subject | marks | PorF |
++-------+--------+---------+-------+------+
+|   123 | alex   | DBMS    |    95 | P    |
+|   124 | peter  | C++     |    45 | F    |
+|   125 | selena | DS      |    92 | P    |
+|   126 | sharon | M1      |    35 | F    |
+|   127 | mary   | OS      |    48 | F    |
++-------+--------+---------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from studentprogress where PorF='F';
++-------+--------+---------+-------+------+
+| regno | name   | subject | marks | PorF |
++-------+--------+---------+-------+------+
+|   124 | peter  | C++     |    45 | F    |
+|   126 | sharon | M1      |    35 | F    |
+|   127 | mary   | OS      |    48 | F    |
++-------+--------+---------+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> delete from studentprogress where regno='123';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from studentprogress;
++-------+--------+---------+-------+------+
+| regno | name   | subject | marks | PorF |
++-------+--------+---------+-------+------+
+|   124 | peter  | C++     |    45 | F    |
+|   125 | selena | DS      |    92 | P    |
+|   126 | sharon | M1      |    35 | F    |
+|   127 | mary   | OS      |    48 | F    |
++-------+--------+---------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> update from studentprogress regno='127' where name='kritika';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from studentprogress regno='127' where name='kritika'' at line 1
+mysql> update studentprogress set regno='127' where name='kritika';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> update studentprogress set name='kritika' where regno='127';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from studentprogress;
++-------+---------+---------+-------+------+
+| regno | name    | subject | marks | PorF |
++-------+---------+---------+-------+------+
+|   124 | peter   | C++     |    45 | F    |
+|   125 | selena  | DS      |    92 | P    |
+|   126 | sharon  | M1      |    35 | F    |
+|   127 | kritika | OS      |    48 | F    |
++-------+---------+---------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql>
+
