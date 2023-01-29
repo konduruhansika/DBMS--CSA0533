@@ -1,0 +1,72 @@
+mysql> use car;
+Database changed
+
+mysql> create table car(customer varchar(25),carname varchar(15),reserve_date date,return_date date);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc car;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| customer     | varchar(25) | YES  |     | NULL    |       |
+| carname      | varchar(15) | YES  |     | NULL    |       |
+| reserve_date | date        | YES  |     | NULL    |       |
+| return_date  | date        | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> insert into car values('anu','honda','2022-12-23','2022-12-26');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into car values('geetha','maruthi','2022-09-12','2022-09-17');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into car values('madhu','suzuki','2022-05-02','2022-05-10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into car values('mahalakshmi','ford','2022-11-15','2022-11-19');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from car;
++-------------+---------+--------------+-------------+
+| customer    | carname | reserve_date | return_date |
++-------------+---------+--------------+-------------+
+| anu         | honda   | 2022-12-23   | 2022-12-26  |
+| geetha      | maruthi | 2022-09-12   | 2022-09-17  |
+| madhu       | suzuki  | 2022-05-02   | 2022-05-10  |
+| mahalakshmi | ford    | 2022-11-15   | 2022-11-19  |
++-------------+---------+--------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from car where customer between geetha and mahalakshmi;
+ERROR 1054 (42S22): Unknown column 'geetha' in 'where clause'
+mysql> select * from car where customer between 'geetha' and 'mahalakshmi';
++-------------+---------+--------------+-------------+
+| customer    | carname | reserve_date | return_date |
++-------------+---------+--------------+-------------+
+| geetha      | maruthi | 2022-09-12   | 2022-09-17  |
+| madhu       | suzuki  | 2022-05-02   | 2022-05-10  |
+| mahalakshmi | ford    | 2022-11-15   | 2022-11-19  |
++-------------+---------+--------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from car where carname in('ford');
++-------------+---------+--------------+-------------+
+| customer    | carname | reserve_date | return_date |
++-------------+---------+--------------+-------------+
+| mahalakshmi | ford    | 2022-11-15   | 2022-11-19  |
++-------------+---------+--------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select customer,carname from car order by reserve_date;
++-------------+---------+
+| customer    | carname |
++-------------+---------+
+| madhu       | suzuki  |
+| geetha      | maruthi |
+| mahalakshmi | ford    |
+| anu         | honda   |
++-------------+---------+
+4 rows in set (0.02 sec)
+
+mysql>
